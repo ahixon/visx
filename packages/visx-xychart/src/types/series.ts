@@ -164,6 +164,8 @@ export type GlyphProps<Datum extends object> = {
   key: string;
   /** Datum for Glyph. */
   datum: Datum;
+  /** Key of Datum */
+  dataKey: keyof Datum;
   /** Index of Datum in data array. */
   index: number;
   /** X coordinate of Glyph. */

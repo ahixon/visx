@@ -121,7 +121,7 @@ export default function ExampleControls({ children }: ControlsProps) {
   >('none');
   const [renderAreaLineOrStack, setRenderAreaLineOrStack] = useState<
     'line' | 'area' | 'areastack' | 'none'
-  >('areastack');
+  >('line');
   const [stackOffset, setStackOffset] = useState<ProvidedProps['stackOffset']>();
   const [renderGlyphSeries, setRenderGlyphSeries] = useState(false);
   const [editAnnotationLabelPosition, setEditAnnotationLabelPosition] = useState(false);

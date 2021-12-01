@@ -75,6 +75,7 @@ export function BaseGlyphSeries<
             color: colorAccessor?.(datum, i) ?? color,
             size: typeof size === 'function' ? size(datum) : size,
             datum,
+            dataKey,
           };
         })
         .filter((point) => point) as GlyphProps<Datum>[],

@@ -80,6 +80,19 @@ function BaseLineSeries<XScale extends AxisScale, YScale extends AxisScale, Datu
     [captureFocusEvents, eventEmitters.onFocus, eventEmitters.onBlur],
   );
 
+  const renderValueGlyphs = ({ glyphs }: GlyphsProps<XScale, YScale, Datum>) => glyphs.map((glyph) => (
+    <React.Fragment key={`value-${glyph.key}`}>
+      <text
+        key={glyph.key}
+        fill="white"
+        fontSize={11}
+        x={glyph.x}
+        y={glyph.y}
+        textAnchor="middle"
+      >{glyph.datum[glyph.dataKey]}</text>
+    </React.Fragment>
+  ))
+
   return (
     <>
       <LinePath x={getScaledX} y={getScaledY} defined={isDefined} curve={curve} {...lineProps}>
@@ -106,6 +119,15 @@ function BaseLineSeries<XScale extends AxisScale, YScale extends AxisScale, Datu
           renderGlyphs={renderGlyphs}
         />
       )}
+      <BaseGlyphSeries
+        dataKey={dataKey}
+        data={data}
+        xAccessor={xAccessor}
+        yAccessor={yAccessor}
+        xScale={xScale}
+        yScale={yScale}
+        renderGlyphs={renderValueGlyphs}
+      />
     </>
   );
 }
